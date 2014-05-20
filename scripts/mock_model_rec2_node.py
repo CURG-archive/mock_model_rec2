@@ -20,7 +20,7 @@ class fake_model_rec_node():
 
         response = model_rec2.srv.FindObjectsResponse()
 
-        response.object_name = ["garnier_shampoo_bottle"]
+        response.object_name = ["garnier_shampoo_bottle", "all", "all"]
         garnier_shampoo_bottle_pose = geometry_msgs.msg.Pose()
         garnier_shampoo_bottle_pose.position.x = 0.066363998
         garnier_shampoo_bottle_pose.position.y = -0.089734
@@ -30,9 +30,30 @@ class fake_model_rec_node():
         garnier_shampoo_bottle_pose.orientation.y = -.5179138189319789
         garnier_shampoo_bottle_pose.orientation.z = 0.20627250068909891
         garnier_shampoo_bottle_pose.orientation.w = 0.45516761736911104
+        all_bottle_pose = geometry_msgs.msg.Pose()
+  
 
-        response.object_pose = [garnier_shampoo_bottle_pose]
-        response.pointcloud = [sensor_msgs.msg.PointCloud2()]
+
+        all_bottle_pose.position = geometry_msgs.msg.Point(**{'x': -0.0202356650356,
+                                                              'y': -0.12407200118,
+                                                              'z': 1.37848537226}
+                                                          )
+        all_bottle_pose.orientation = geometry_msgs.msg.Quaternion(**{  'x': -0.41113976265,
+                                                                       'y': 0.7697816577,
+                                                                       'z': -0.19497976233,
+                                                                       'w': 0.447641806938})
+
+        all_bottle_2 = geometry_msgs.msg.Pose()
+        all_bottle_2.position = geometry_msgs.msg.Point(**{'x': -0.0510661726795,
+                                                                'y': 0.0510965974471,
+                                                                'z': 0.997804824888})
+        all_bottle_2.orientation = geometry_msgs.msg.Quaternion(**{'x': 0.64399743788,
+                                                                        'y': -0.542687649874,
+                                                                        'z': 0.258524892466,
+                                                                        'w': 0.473204284272})
+
+        response.object_pose = [garnier_shampoo_bottle_pose, all_bottle_pose, all_bottle_2]
+        response.pointcloud = [sensor_msgs.msg.PointCloud2()]*3
 
         response.reason = "no reason"
         return response
